@@ -22,6 +22,9 @@ const createComment = async (req, res) => {
   const id_thumbnail = req.params.id_thumb
 
   try {
+    if(!comment){
+      return res.status(404).json({message: 'Isi Komen Dengan Benar!'})
+    }
     const result = await CommentService.createComment(
       id_thumbnail,
       req.user.username,
